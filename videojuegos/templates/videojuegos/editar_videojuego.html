@@ -1,0 +1,31 @@
+{% extends 'videojuegos/base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Editar Videojuego</h1>
+
+<div class="card">
+    <div class="card-header">
+        Formulario de Edición de Videojuego
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="mb-3">
+                    <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="text-danger">
+                            {% for error in field.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Actualizar Videojuego</button>
+            <a href="{% url 'lista_videojuegos' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

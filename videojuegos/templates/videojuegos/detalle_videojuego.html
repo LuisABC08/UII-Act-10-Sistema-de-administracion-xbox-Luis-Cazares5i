@@ -1,0 +1,25 @@
+{# videojuegos/templates/videojuegos/detalle_videojuego.html #}
+
+{% extends 'videojuegos/base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Detalles del Videojuego</h1>
+
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Videojuego: {{ videojuego.Titulo }}</h5>
+    </div>
+    <div class="card-body">
+        <p><strong>ID Videojuego:</strong> {{ videojuego.ID_Videojuego }}</p>
+        <p><strong>Título:</strong> {{ videojuego.Titulo }}</p>
+        <p><strong>Desarrollador:</strong> {{ videojuego.Desarrollador }}</p>
+        <p><strong>Género:</strong> {{ videojuego.Genero }}</p>
+        <p><strong>Plataforma:</strong> {{ videojuego.Plataforma }}</p>
+        <p><strong>Fecha de Lanzamiento:</strong> {{ videojuego.Fecha_Lanzamiento|date:"d M Y" }}</p>
+        <p><strong>ID Proveedor:</strong> {{ videojuego.ID_Proveedor }}</p>
+    </div>
+    <div class="card-footer text-end">
+        <a href="{% url 'lista_videojuegos' %}" class="btn btn-secondary">Volver a la Lista</a>
+    </div>
+</div>
+{% endblock %}
